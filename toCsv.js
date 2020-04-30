@@ -1,8 +1,8 @@
 const https = require('request-promise');
 const ObjectsToCsv = require('objects-to-csv')
 const axios = require('axios');
+const fs = require('fs');
 const urls = [];
-
 for (let i = 1; i < 1000; i++)
     urls.push(`${i}.json`);
 
@@ -25,7 +25,8 @@ for (const url of urls) {
     axios.get('https://player.fm/series/' + url)
         .then(function (response) {
             // handle success
-            console.log(url);
+            console.log(url)
+            fs.appendFileSync("filepath.txt", response.data.url + "\n");
         })
         .catch(function (error) {
             // handle error
