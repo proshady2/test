@@ -3,7 +3,7 @@ const ObjectsToCsv = require('objects-to-csv')
 const axios = require('axios');
 const fs = require('fs');
 const urls = [];
-for (let i = 0; i < 1500000; i++)
+for (let i = 500000; i < 600000; i++)
     urls.push(`${i}.json`);
 
 
@@ -25,10 +25,11 @@ for (const url of urls) {
     axios.get('https://player.fm/series/' + url)
         .then((response) => {
             // handle success
-            console.log(url)
-            fs.appendFileSync("filepath.txt", response.data.url + "\n");
+            console.log('yesy', url)
+            fs.appendFileSync("500,000,600,000.txt", response.data.url + "\n");
         })
         .catch((error) => {
+            console.error('no', url)
             // handle error
             // console.log(error);
         });
