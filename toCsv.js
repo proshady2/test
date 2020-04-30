@@ -3,7 +3,7 @@ const ObjectsToCsv = require('objects-to-csv')
 const axios = require('axios');
 const fs = require('fs');
 const urls = [];
-for (let i = 1; i < 1000; i++)
+for (let i = 0; i < 1500000; i++)
     urls.push(`${i}.json`);
 
 
