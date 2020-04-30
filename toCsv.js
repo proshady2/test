@@ -28,13 +28,6 @@ for (const url of urls) {
             console.log(url)
             fs.appendFileSync("filepath.txt", response.data.url + "\n");
         })
-        .catch((error) => {
-            // handle error
-            // console.log(error);
-        })
-        .finally(() => {
-            // always executed
-        });
     // https(options).then(r => {
     //     console.log(url);
     //     // const dataObjects =
