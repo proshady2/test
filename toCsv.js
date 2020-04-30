@@ -3,7 +3,7 @@ const ObjectsToCsv = require('objects-to-csv')
 
 const urls = [];
 
-for (let i = 1; i < 10; i++)
+for (let i = 1; i < 46010; i++)
     urls.push(`${i}.json`);
 
 
@@ -21,7 +21,7 @@ for (let i = 1; i < 10; i++)
             },
             'maxRedirects': 20,
         };
-        https(options).then(r => {
+        await https(options).then(r => {
             console.log(url);
 
 
@@ -31,13 +31,11 @@ for (let i = 1; i < 10; i++)
                 url: JSON.parse(r).url,
                 title: JSON.parse(r).title,
             }
-            const csv = new ObjectsToCsv(dataObjects)
-            csv.toDisk('./list.csv')
-            // feeds.push(dataObjects);
+
+            feeds.push(dataObjects);
         }).catch(e => {
         })
     }
-
-})().then(() => {
-    console.log("Done");
-});
+    const csv = new ObjectsToCsv(feeds)
+    await csv.toDisk('./list.csv')
+})();
