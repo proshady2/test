@@ -23,16 +23,16 @@ for (const url of urls) {
     // };
 
     axios.get('https://player.fm/series/' + url)
-        .then(function (response) {
+        .then((response) => {
             // handle success
             console.log(url)
             fs.appendFileSync("filepath.txt", response.data.url + "\n");
         })
-        .catch(function (error) {
+        .catch((error) => {
             // handle error
             // console.log(error);
         })
-        .finally(function () {
+        .finally(() => {
             // always executed
         });
     // https(options).then(r => {
